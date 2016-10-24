@@ -13,9 +13,9 @@
 
 <%= form_for(@message) do |f| %>
     名前：
-    <%= f.text_field :name :placeholder=>"例：田中太郎" %>
+    <%= f.text_field :name,:placeholder=>"例：田中太郎" %>
     
     内容：
-    <%= f.text_area :body :placeholder=>"例：はじめまして" %>
+    <%= f.text_area :body,:placeholder=>"例：はじめまして" %>
     <%= f.submit %>
 <% end %>
