@@ -6,7 +6,7 @@
         <div class="row" style="margin-top:-15px;">
         <div class="col-sm-8" style="overflow:scroll; word-break:break-all; overflow-x:hidden; height:300px; background-color:#fcfdff">
             <% @messages.reverse_each do |message| %>
-                <span class="label label-info" style="font-size:1em;"><%= message.name %></span><a style="font-size:0.7em;"><%= message.created_at %></a>
+                <span class="label label-info" style="font-size:1em;"><%= message.name %></span><a style="font-size:0.7em;">:<%= message.created_at %></a>
                 <%= simple_format(message.body) %>
             <% end %>
         </div>
