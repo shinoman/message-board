@@ -1,21 +1,25 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
+    <div class="panel-heading" style="background-color:#bfe2ff;">
         メッセージ一覧
     </div>
-    <div class="panel-body">
-        <% @messages.each do |message| %>
-            <span class="label label-info"><%= message.name %></span>
-            <%= message.body %>
-            <br>
+    <div class="panel-body" style="padding-bottom:0px;">
+        <div class="row" style="margin-top:-15px;">
+        <div class="col-sm-8" style="overflow:scroll; word-break:break-all; overflow-x:hidden; height:300px; background-color:#fcfdff">
+            <% @messages.reverse_each do |message| %>
+                <span class="label label-info" style="font-size:1em;"><%= message.name %></span><a style="font-size:0.7em;"><%= message.created_at %></a>
+                <%= simple_format(message.body) %>
+            <% end %>
+        </div>
+        <div class="col-sm-4" style="background-color:#f4faff;">
+            <%= form_for(@message) do |f| %>
+                名前：<br>
+                <%= f.text_field :name,:size=>"43",:placeholder=>"例：田中太郎" %><br>
+                内容：<br>
+                <%= f.text_area :body,:size=>"45x10",:placeholder=>"例：はじめまして",:style=>"resize: none;" %><br>
+            <%= f.submit %>
         <% end %>
+        </div>
+        </div>
     </div>
 </div>
 
-<%= form_for(@message) do |f| %>
-    名前：
-    <%= f.text_field :name,:placeholder=>"例：田中太郎" %>
-    
-    内容：
-    <%= f.text_area :body,:placeholder=>"例：はじめまして" %>
-    <%= f.submit %>
-<% end %>
