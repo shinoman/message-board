@@ -1,11 +1,5 @@
-<div class="panel panel-default">
-    <div class="panel-heading" style="background-color:#bfe2ff;">
-        メッセージ一覧
-    </div>
-    <div class="panel-body" style="padding-bottom:0px; height:auto;">
-        <div class="row" style="margin-top:-15px;">
-            <% if @message.errors.present? %>
-                    <div class="alert alert-danger" style="margin-bottom:0px;">
+                <% if @message.errors.present? %>
+                    <div class="alert alert-danger">
                         <%= alert %>
                         <ul>
                             <% @message.errors.full_messages.each do |full_message| %>
@@ -16,23 +10,22 @@
                         </ul>
                     </div>
                     <% end %>
-                    
+<div class="panel panel-default">
+    <div class="panel-heading" style="background-color:#bfe2ff;">
+        メッセージ一覧
+    </div>
+    <div class="panel-body" style="padding-bottom:0px; height:auto;">
+        <div class="row" style="margin-top:-15px;">
             <div class="col-md-8" style="overflow:scroll; word-break:break-all; overflow-x:hidden; height:330px; background-color:#fcfdff; padding:15px;">
                 <% @messages.reverse_each do |message| %>
-                    <span class="label label-info" style="font-size:1em;"><%= message.name %></span><a style="font-size:0.7em;">:<%= message.created_at %></a>
+                    <span class="label label-info" style="font-size:1em;"><%= message.name %></span><a style="font-size:0.7em;">:<%= message.created_at %></a><p style="float:right; display:inline;">(<%= link_to "edit" , edit_message_path(message) %>,<%= link_to "destroy" , message , method: :delete, date: { confirm:"削除してもよろしいですか？" } %>)</p>
                     <%= simple_format(message.body) %>
+                    
                 <% end %>
             </div>
             <div class="col-md-4" style="background-color:#f4faff; padding:15px;">
                 <div style="width=100%">
-                    <%= form_for(@message) do |f| %>
-                    
-                    名前：<br>
-                    <%= f.text_field :name,:style=>"width:100%;",:placeholder=>"名前は２文字以上２５文字以内でお願いします。" %><br>
-                    内容：<br>
-                    <%= f.text_area :body,:placeholder=>"内容は２文字以上でお願いします。改行も可能です。",:style=>"resize: none;width:100%;height:202px;" %><br>
-                    <%= f.submit %>
-                    <% end %>
+                    <%= render "form" %>
                 </div>
             </div>
         </div>
