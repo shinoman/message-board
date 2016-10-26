@@ -1,6 +1,12 @@
 <%= form_for(@message) do |f| %>
+<div class="row">
+<div class="col-sm-7">
 名前：<br>
-<%= f.text_field :name,:style=>"width:100%;",:placeholder=>"名前は２文字以上２５文字以内でお願いします。" %><br>
+<%= f.text_field :name,:style=>"width:100%;",:placeholder=>"名前は２文字以上２５文字以内でお願いします。" %></div>
+<div class="col-sm-3">
+年齢：<br>
+<%= f.text_field :age,:style=>"width:100%;",:placeholder=>"20" %></div>
+</div>
 内容：<br>
 <%= f.text_area :body,:placeholder=>"内容は２文字以上でお願いします。改行も可能です。",:style=>"resize: none;width:100%;height:202px;" %><br>
 <%= f.submit %>
