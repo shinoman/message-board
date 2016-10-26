@@ -1,8 +1,8 @@
 <%= form_for(@message) do |f| %>
-<div class="col-sm-9">
+<div class="col-sm-9" style=" padding-left:0; padding-right:0;">
 名前：<br>
 <%= f.text_field :name,:style=>"width:100%;",:placeholder=>"名前は２文字以上２５文字以内" %></div>
-<div class="col-sm-3">
+<div class="col-sm-3" style="padding-right:0;">
 年齢：<br>
 <%= f.text_field :age,:style=>"width:100%;",:placeholder=>"20" %></div>
 </div>
