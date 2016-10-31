@@ -1,22 +1,25 @@
 <div class="panel panel-default">
-    <div class="panel-heading" style="background-color:#bfe2ff;">
+    <div class="panel-heading">
         メッセージ一覧
     </div>
-    <div class="panel-body" style="padding-bottom:0px;">
-        <div class="row" style="margin-top:-15px;">
-        <div class="col-md-8" style="overflow:scroll; word-break:break-all; overflow-x:hidden; height:300px; background-color:#fcfdff">
+    <div class="panel-body">
+        <div class="row">
+        <div class="col-md-8 board">
             <% @messages.reverse_each do |message| %>
-                <span class="label label-info" style="font-size:1em;"><%= message.name %></span><a style="font-size:0.7em;">:<%= message.created_at %></a>
+                <span class="label label-info"><%= message.name %></span><span class="time">:<%= message.created_at %></span>
                 <%= simple_format(message.body) %>
             <% end %>
         </div>
-        <div class="col-md-4" style="background-color:#f4faff;">
-            <div style="width=100%"
-            <%= form_for(@message) do |f| %>
-                名前：<br>
-                <%= f.text_field :name,:style=>"width:100%;",:placeholder=>"名前は２文字以上２５文字以内でお願いします。" %><br>
-                内容：<br>
-                <%= f.text_area :body,:placeholder=>"内容は２文字以上でお願いします。改行も可能です。",:style=>"resize: none;width:100%;height:202px;" %><br>
+        <div class="col-md-4 input">
+            <%= form_for(@message, html:{class:"form-horizontal"}) do |f| %>
+            <div class="form-group">
+                <label class="col-md-2">名前：</label>
+                <div class ="col-md-10">
+                    <%= f.text_field :name, :placeholder=>"名前は２文字以上２５文字以内でお願いします。" %>
+                </div>
+            </div>
+                <label>内容：</label>
+                <%= f.text_area :body, class:"input_body", :placeholder=>"内容は２文字以上でお願いします。改行も可能です。" %><br>
             <%= f.submit %>
         <% end %>
         </div>

@@ -1,3 +1,43 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.board {
+    overflow:scroll;
+    word-break:break-all;
+    overflow-x:hidden;
+    height:300px;
+    background-color:#fcfdff;
+}
+span.label-info {
+    font-size:1em;
+}
+span.time {
+    font-size:0.7em;
+}
+div.input {
+    background-color:#f4faff;
+    height:300px;
+}
+.input_body{
+    resize:none;
+    width:100%;
+    height:202px;
+    padding:15px;
+}
+.panel-body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+label.col-md-2 {
+    padding-right:0;
+}
+div.col-md-10 {
+    padding-left:0;
+    input {
+        width:100%;
+    }
+}
+div.form-group {
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
