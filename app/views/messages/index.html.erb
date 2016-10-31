@@ -13,14 +13,14 @@
         <div class="col-md-4 input">
             <%= form_for(@message, html:{class:"form-horizontal"}) do |f| %>
             <div class="form-group">
-                <label class="col-md-2">名前：</label>
+                <label class="col-md-2 control-label">名前：</label>
                 <div class ="col-md-10">
-                    <%= f.text_field :name, :placeholder=>"名前は２文字以上２５文字以内でお願いします。" %>
+                    <%= f.text_field :name, :placeholder=>"名前は２文字以上２５文字以内でお願いします。",class:"form-control" %>
                 </div>
             </div>
-                <label>内容：</label>
-                <%= f.text_area :body, class:"input_body", :placeholder=>"内容は２文字以上でお願いします。改行も可能です。" %><br>
-            <%= f.submit %>
+                <label class="control-label">内容：</label>
+                <%= f.text_area :body, class:"input_body form-control", :placeholder=>"内容は２文字以上でお願いします。改行も可能です。" %><br>
+            <%= f.submit :class=>"btn btn-primary"%>
         <% end %>
         </div>
         </div>
