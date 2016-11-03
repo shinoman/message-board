@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :set_message, only: [:edit, :update, :destroy] # edit、updateのアクションの前だけ「set_message」メソッドメソッドを実行する
+
   def index
     @message = Message.new #Messageモデルオブジェクトの生成
     @messages = Message.all #テーブルからすべてのレコードを取得する
@@ -45,6 +47,24 @@ class MessagesController < ApplicationController
     end
   end
   
+  def edit
+  end
+    
+  def update
+    if @message.update(message_params)
+      #保存に成功した場合はトップページへリダイレクト
+      redirect_to root_path , notice: "メッセージを編集しました"
+    else
+      #保存に失敗した場合は編集画面へ戻す
+      render "edit"
+    end
+  end
+
+  def destroy
+    @message.destroy
+    redirect_to root_path, notice: "メッセージを削除しました"
+  end
+  
   private
   def message_params
     params.require(:message).permit(:name, :body)
@@ -54,5 +74,9 @@ class MessagesController < ApplicationController
   そのため保存を許可するカラムを指定する「ストロングパラメータ」というものを使う。requireの引数にparamsのキー、permitの引数に保存を許可するカラムを指定する。 
   そして、許可したカラムのみのハッシュを返すメソッドをprivateメソッドとして定義する。 
 =end
+  end
+  
+  def set_message
+    @message = Message.find(params[:id])
   end
 end

@@ -16,7 +16,12 @@
     </div>
   </nav>
   <div class="container">
-    <%= yield %>
+    <% if notice %>
+      <div class="alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
+    <%= yield %> <!--コントローラで処理された内容の埋め込み-->
   </div>
 </body>
 </html>

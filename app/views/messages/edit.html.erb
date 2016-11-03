@@ -1,0 +1,14 @@
+<h1>メッセージの編集</h1>
+<% if @message.errors.present? %> <!-- errosに値が入っているか？（present?)を判断 -->
+    <div class="alert alert-danger">
+        <%= alert %>
+        <ul>
+            <% @message.errors.full_messages.each do |full_message| %><!-- full_messagesでバリデーションのエラーメッセージの配列を取得してerrorメッセージの数だけ繰り返す-->
+                <li>
+                    <%= full_message %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+<%= render "form" %>

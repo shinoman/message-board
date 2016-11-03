@@ -16,27 +16,23 @@
     </div>
     <div class="panel-body">
         <div class="row">
-        <div class="col-md-8 board">
-            <% @messages.reverse_each do |message| %> 
-                <span class="label label-info"><%= message.name %></span><span class="time">:<%= message.created_at %></span>
-                <%= simple_format(message.body) %><!--simple_format()でタグ系も実行可能にしている-->
-            <% end %>
-        </div>
-        <div class="col-md-4 input">
-            <%= form_for(@message, html:{class:"form-horizontal"}) do |f| %>
-            <div class="form-group">
-                <label class="col-md-2 control-label">名前：</label>
-                <div class ="col-md-10">
-                    <%= f.text_field :name, :placeholder=>"名前は２文字以上２５文字以内でお願いします。",class:"form-control" %>
-                </div>
+            <div class="col-md-8 board">
+                <% @messages.reverse_each do |message| %> 
+                    <span class="label label-info"><%= message.name %></span><span class="time">:<%= message.created_at %></span>
+                    <p style="float:right; display:inline;">
+                        (
+                        <%= link_to "edit" , edit_message_path(message) %>,
+                        <%= link_to "destroy" , message , method: :delete, data: { :confirm => '削除します。よろしいですか?'} %>
+                        )
+                    </p>
+                    <%= simple_format(message.body) %><!--simple_format()でタグ系も実行可能にしている-->
+                <% end %>
             </div>
-                <label class="control-label">内容：</label>
-                <%= f.text_area :body, class:"input_body form-control", :placeholder=>"内容は２文字以上でお願いします。改行も可能です。" %><br>
-            <%= f.submit :class=>"btn btn-primary"%>
-        <% end %>
-        </div>
-        </div>
+            <div class="col-md-4 input">
+                <%= render "form" %>
+            </div>
         </div>
     </div>
 </div>
+
 
