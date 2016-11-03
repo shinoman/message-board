@@ -1,3 +1,15 @@
+<% if @message.errors.present? %> <!-- errosに値が入っているか？（present?)を判断 -->
+    <div class="alert alert-danger">
+        <%= alert %>
+        <ul>
+            <% @message.errors.full_messages.each do |full_message| %><!-- full_messagesでバリデーションのエラーメッセージの配列を取得してerrorメッセージの数だけ繰り返す-->
+                <li>
+                    <%= full_message %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 <div class="panel panel-default">
     <div class="panel-heading">
         メッセージ一覧
@@ -5,9 +17,9 @@
     <div class="panel-body">
         <div class="row">
         <div class="col-md-8 board">
-            <% @messages.reverse_each do |message| %>
+            <% @messages.reverse_each do |message| %> 
                 <span class="label label-info"><%= message.name %></span><span class="time">:<%= message.created_at %></span>
-                <%= simple_format(message.body) %>
+                <%= simple_format(message.body) %><!--simple_format()でタグ系も実行可能にしている-->
             <% end %>
         </div>
         <div class="col-md-4 input">
