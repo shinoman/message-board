@@ -67,7 +67,7 @@ class MessagesController < ApplicationController
   
   private
   def message_params
-    params.require(:message).permit(:name, :body)
+    params.require(:message).permit(:name, :age, :body)
 =begin
   requireは引数のファイル名のRubyファイルを読み込んで実行するメソッド
   コントローラでNote.new(params[:note])という書き方をしてしまうとどんな値でもセットできてしまうようになるのでセキュリティ上の問題がある。

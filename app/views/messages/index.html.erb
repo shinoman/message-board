@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-8 board">
                 <% @messages.reverse_each do |message| %> 
-                    <span class="label label-info"><%= message.name %></span><span class="time">:<%= message.created_at %></span>
+                    <span class="label label-info"><%= message.name %></span><spn class="age"><%= message.age %>歳</spn><span class="time">:<%= message.created_at %></span>
                     <p style="float:right; display:inline;">
                         (
                         <%= link_to "edit" , edit_message_path(message) %>,
